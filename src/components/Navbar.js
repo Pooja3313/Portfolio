@@ -1,5 +1,6 @@
 import React from "react";
 import "./Navbar.css";
+import { NavLink } from "react-router-dom";
 
 
 function Navbar() {
@@ -10,10 +11,10 @@ function Navbar() {
 
 <nav id="navbar" class="navbar">
   <ul>
-    <li><a class="nav-link scrollto " href="/Home">Home</a></li>
-    <li><a class="nav-link scrollto" href="/About">About</a></li>
-    <li><a class="nav-link scrollto" href="/Resume">Resume</a></li>
-   <li><a class="nav-link scrollto" href="/Contact">Contact</a></li>
+    <li><NavLink class="nav-link scrollto " to="/Home">Home</NavLink></li>
+    <li><NavLink class="nav-link scrollto" to="/About">About</NavLink></li>
+    <li><NavLink class="nav-link scrollto" to="/Resume">Resume</NavLink></li>
+   <li><NavLink class="nav-link scrollto" to="/Contact">Contact</NavLink></li>
   </ul>
   <i class="bi bi-list mobile-nav-toggle"></i>
 </nav>

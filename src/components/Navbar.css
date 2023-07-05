@@ -27,6 +27,10 @@
   /* background: rgb(79, 108, 172); */
 }
 
+.navbar ul{
+  text-decoration: none;
+  color:#ffb727;
+}
 .navbar ul {
   margin: 0;
   padding: 0;
