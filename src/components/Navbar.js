@@ -1,7 +1,6 @@
 import React from "react";
 import "./Navbar.css";
 import { NavLink } from "react-router-dom";
-import "../js/main"
 import { useEffect } from "react";
 import "jquery-ui-dist/jquery-ui";
 import $ from "jquery";
