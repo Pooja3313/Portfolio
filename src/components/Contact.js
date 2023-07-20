@@ -1,5 +1,6 @@
 import React from "react";
 import "./Contact.css";
+// import {faEnvelope} from 'font-awesome';
 
 function Contact() {
 return (
@@ -33,7 +34,7 @@ return (
               </div>
               <div class="col-md-6">
                 <div class="info-box mt-4">
-                  <i class="bx bx-envelope"></i>
+                {/* <FontAwesomeIcon icon={faEnvelope} /> */}
                   <h3>Email Me</h3>
                   <p>sorathiyapooja33@gmail.com</p>
                 </div>

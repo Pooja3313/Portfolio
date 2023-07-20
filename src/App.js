@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
+// import './js/main';
 import Navbar from './components/Navbar';
 import Home from './components/Home';
 import Contact from './components/Contact';
@@ -20,9 +21,7 @@ function App() {
         <Route path='/About' exact element={<About/>} /> 
         <Route path='/Resume' element={<Resume/>} />
         <Route path='/Contact' element={<Contact/>} /> 
-        <Route path='/' element={<Home/>} />
-        
-         
+        <Route path='/' element={<Home/>} />    
     </Routes>
     <Footer/>
       
