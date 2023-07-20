@@ -1,46 +1,89 @@
 import React from "react";
 import "./Navbar.css";
 import { NavLink } from "react-router-dom";
-import { useEffect } from "react";
-import "jquery-ui-dist/jquery-ui";
-import $ from "jquery";
-var scrollto = require('scroll-to');
+import { useEffect,useState } from "react";
 
 
+const select = (el, all = false) => {
+  el = el.trim();
+
+  if (el.startsWith('/')) {
+    el = el.substring(1); 
+  }
+
+  if (all) {
+    return [...document.querySelectorAll(el)];
+  } else {
+    return document.querySelector(el);
+  }
+};
 function Navbar() {
 
-  // $(document).on('click', '.mobile-nav-toggle', function(e) {
-  //   $('#navbar').toggleClass('navbar-mobile');
-  //   $(this).toggleClass('bi-list bi-x');
-  // });
+  useEffect(() => {
   
+    const handleClick = (e) => {
+      const clickedElement = e.target;
 
-  /**
-   * Mobile nav dropdowns activate
-   */
-  // $(document).on('click', '.navbar .dropdown > a', function(e) {
-  //   if ($('#navbar').hasClass('navbar-mobile')) {
-  //     e.preventDefault();
-  //     $(this).next().toggleClass('dropdown-active');
-  //   }
-  // });
+      if (clickedElement.matches('.mobile-nav-toggle')) {
+        const navbar = select('#navbar');
+        navbar.classList.toggle('navbar-mobile');
+        clickedElement.classList.toggle('bi-list');
+        clickedElement.classList.toggle('bi-x');
+      }
+
+      if (clickedElement.matches('.navbar .dropdown > .abc')) {
+        const navbar = select('#navbar');
+
+        if (navbar.classList.contains('navbar-mobile')) {
+          e.preventDefault();
+          clickedElement.nextElementSibling.classList.toggle('dropdown-active');
+        }
+      }
+
+      if (clickedElement.matches('.scrollto')) {
+        const targetHash = clickedElement.getAttribute('href');
+
+        if (targetHash && select(targetHash)) {
+          e.preventDefault();
+
+          let navbar = select('#navbar');
+
+          if (navbar.classList.contains('navbar-mobile')) {
+            navbar.classList.remove('navbar-mobile');
+            let navbarToggle = select('.mobile-nav-toggle');
+            navbarToggle.classList.toggle('bi-list');
+            navbarToggle.classList.toggle('bi-x');
+          }
+
+          scrollto(targetHash);
+        }
+      }
+    };
+
+    document.addEventListener('click', handleClick, true);
+
+    return () => {
+      document.removeEventListener('click', handleClick, true);
+    };
+
+
+  }, []);
+
+  const scrollto = (hash) => {
+    let header = select('#header');
+    let offset = header.offsetHeight;
   
-  /**
-   * Scrool with ofset on links with a class name .scrollto
-   */
-  // $(document).on('click', '.scrollto', function(e) {
-  //   if ($(this.hash).length) {
-  //     e.preventDefault();
+    let cleanedHash = hash.replace('/', ''); // Remove the leading forward slash
+    let element = select(cleanedHash);
   
-  //     let navbar = $('#navbar');
-  //     if (navbar.hasClass('navbar-mobile')) {
-  //       navbar.removeClass('navbar-mobile');
-  //       let navbarToggle = $('.mobile-nav-toggle');
-  //       navbarToggle.toggleClass('bi-list bi-x');
-  //     }
-  //     scrollto(this.hash);
-  //   }
-  // });
+    if (element) {
+      let elementPos = element.offsetTop;
+      window.scrollTo({
+        top: elementPos - offset,
+        behavior: 'smooth',
+      });
+    }
+  };
   
 	return(
 <>
