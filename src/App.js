@@ -7,13 +7,14 @@ import Contact from './components/Contact';
 import About from './components/About';
 import Resume from './components/Resume';
 import Footer from './components/Footer';
+import ScrollToTop from './components/ScrollToTop';
 import {BrowserRouter,Routes,Route,} from 'react-router-dom';
 
 function App() {
   return (
     <BrowserRouter>
   <div>
-   
+   <ScrollToTop/>
     <Navbar />
   
     <Routes >

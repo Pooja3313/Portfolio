@@ -23,14 +23,20 @@ function Navbar() {
   
     const handleClick = (e) => {
       const clickedElement = e.target;
-
+      const navbar = select('#navbar');
+    
       if (clickedElement.matches('.mobile-nav-toggle')) {
-        const navbar = select('#navbar');
         navbar.classList.toggle('navbar-mobile');
         clickedElement.classList.toggle('bi-list');
         clickedElement.classList.toggle('bi-x');
       }
-
+    
+      if (clickedElement.matches('.navbar a')) {
+        navbar.classList.remove('navbar-mobile');
+        let navbarToggle = select('.mobile-nav-toggle');
+        navbarToggle.classList.toggle('bi-list');
+        navbarToggle.classList.toggle('bi-x');
+      }
       if (clickedElement.matches('.navbar .dropdown > .abc')) {
         const navbar = select('#navbar');
 
@@ -88,16 +94,16 @@ function Navbar() {
 	return(
 <>
  {/* <!-- ======= Header ======= --> */}
- <header id="header" class="fixed-top d-flex justify-content-center align-items-center header-transparent">
+ <header id="header" className="fixed-top d-flex justify-content-center align-items-center header-transparent">
 
-<nav id="navbar" class="navbar">
+<nav id="navbar" className="navbar">
   <ul>
-    <li><NavLink class="nav-link scrollto " to="/Home">Home</NavLink></li>
-    <li><NavLink class="nav-link scrollto" to="/About">About</NavLink></li>
-    <li><NavLink class="nav-link scrollto" to="/Resume">Resume</NavLink></li>
-   <li><NavLink class="nav-link scrollto" to="/Contact">Contact</NavLink></li>
+    <li><NavLink className="nav-link scrollto" to="/Home">Home</NavLink></li>
+    <li><NavLink className="nav-link scrollto" to="/About">About</NavLink></li>
+    <li><NavLink className="nav-link scrollto" to="/Resume">Resume</NavLink></li>
+   <li><NavLink className="nav-link scrollto" to="/Contact">Contact</NavLink></li>
   </ul>
-  <i class="bi bi-list mobile-nav-toggle"></i>
+  <i className="bi bi-list mobile-nav-toggle"></i>
 </nav>
 
 </header>
