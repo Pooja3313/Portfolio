@@ -47,7 +47,7 @@ function Navbar() {
       }
 
       if (clickedElement.matches('.scrollto')) {
-        const targetHash = clickedElement.getAttribute('href');
+        const targetHash = clickedElement.getAttribute('to');
 
         if (targetHash && select(targetHash)) {
           e.preventDefault();
@@ -93,20 +93,44 @@ function Navbar() {
   
 	return(
 <>
- {/* <!-- ======= Header ======= --> */}
- <header id="header" className="fixed-top d-flex justify-content-center align-items-center header-transparent">
 
-<nav id="navbar" className="navbar">
-  <ul>
-    <li><NavLink className="nav-link scrollto" to="/Home">Home</NavLink></li>
-    <li><NavLink className="nav-link scrollto" to="/About">About</NavLink></li>
-    <li><NavLink className="nav-link scrollto" to="/Resume">Resume</NavLink></li>
-   <li><NavLink className="nav-link scrollto" to="/Contact">Contact</NavLink></li>
-  </ul>
-  <i className="bi bi-list mobile-nav-toggle"></i>
-</nav>
+<header class="container">
+        <div class="page-header">
+            <div class="logo">
+                <a to="#">Logo.</a>
+            </div>
+            <input type="checkbox" id="click"/>
 
-</header>
+            <label for="click" class="mainicon">
+                <div class="menu">
+                    <i class='bx bx-menu'></i>
+                </div>
+            </label>
+            <ul>
+      <li>
+        <NavLink to="/Home" activeClassName="active" style={{ '--navAni': 1 }}>
+          Home
+        </NavLink>
+      </li>
+      <li>
+        <NavLink to="/About" style={{ '--navAni': 2 }}>
+          About
+        </NavLink>
+      </li>
+      <li>
+        <NavLink to="/Resume" style={{ '--navAni': 3 }}>
+          Resume
+        </NavLink>
+      </li>
+      <li>
+        <NavLink to="/Contact" style={{ '--navAni': 4 }}>
+          Contact
+        </NavLink>
+      </li>
+    </ul>
+        </div>
+    </header>
+
 
 	</>
 	);
